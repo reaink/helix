@@ -68,11 +68,17 @@ H = "goto_previous_buffer"
 L = "goto_next_buffer"
 K = "hover"
 G = "goto_file_end"
+y = "yank_to_clipboard"
+p = "paste_clipboard_after"
 ret= "expand_selection"
 backspace = "shrink_selection"
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
 
 [keys.insert]
-j = { k = "normal_mode" }
+"C-[" = "normal_mode"
 
 [keys.select]
 o = ["open_below", "normal_mode"]
