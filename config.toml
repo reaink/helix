@@ -102,7 +102,7 @@ space = "file_picker"
 c = ":buffer-close"
 n = ":new"
 q = ":quit"
-e = ":sh helix-wezterm.sh explorer"
+e = ":sh helix-wezterm.sh explorer-yazi"
 
 [keys.normal.space.","]
 b = ":sh helix-wezterm.sh blame"
