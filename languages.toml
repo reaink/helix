@@ -1,0 +1,247 @@
+[[sources]] # list of sources to load
+name = "friendly-snippets"  # optional name shown on snippet description
+git = "https://github.com/rafamadriz/friendly-snippets.git" # git repo with snippets collections
+
+[language-server.gpt]
+command = "helix-gpt"
+environment = { HANDLER= "codeium"}
+
+# Rust
+# ==============================================================================
+[[language]]
+name = "rust"
+auto-format = false
+# ==============================================================================
+
+[language-server.rust-analyzer.config]
+check = { command = "clippy", features = "all" }
+diagnostics = { experimental = { enable = true } }
+hover = { actions = { enable = true } }
+typing = { autoClosingAngleBrackets = { enable = true } }
+cargo = { allFeatures = true }
+procMacro = { enable = true }
+
+# C
+# ==============================================================================
+[language-server.clangd]
+command = "clangd"
+
+[[language]]
+name = "c"
+auto-format = false
+language-servers = ["clangd"]
+# ==============================================================================
+
+
+# Gleam
+# ==============================================================================
+[language-server.gleam]
+command = "gleam"
+args = ["lsp"]
+
+[[language]]
+name = "gleam"
+auto-format = false
+language-servers = ["gleam"]
+# ==============================================================================
+
+
+# Go
+# ==============================================================================
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
+[[language]]
+name = "go"
+auto-format = false
+language-servers = ["gopls"]
+# ==============================================================================
+
+# Python
+# ==============================================================================
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[[language]]
+name = "python"
+auto-format = false
+language-servers = ["pyright", "ruff"]
+roots = [".", "pyproject.toml", "pyrightconfig.json", "requirements.txt"]
+# ==============================================================================
+
+# Starlark
+# ==============================================================================
+[language-server.buck2-lsp]
+command = "buck2"
+args = ["lsp"]
+
+[[language]]
+name = "starlark"
+auto-format = false
+file-types = ["bzl", { glob = "BUCK" }]
+language-servers = ["buck2-lsp"]
+# ==============================================================================
+
+[[language]]
+name = "vue"
+scope = "source.vue"
+file-types = ["vue"]
+injection-regex = "vue"
+roots = ["package.json", "tailwind.config.js", "tailwind.config.cjs"]
+language-servers = ["volar", "tailwindcss-vue"]
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [  "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls", "scls"]
+formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls", "scls"]
+formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls","scls"]
+grammar = "javascript"
+formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls", "scls"]
+formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = [ "vscode-json-language-server" ]
+formatter = { command = 'npx', args = ["prettier", "--parser", "json"] }
+auto-format = true
+
+[[language]]
+name = "lua"
+auto-format = true
+
+[language-server.vscode-json-language-server.config]
+json = { validate = { enable = true }, format = { enable = true } }
+provideFormatter = true
+
+[language-server.vscode-css-language-server.config]
+css = { validate = { enable = true } }
+scss = { validate = { enable = true } }
+less = { validate = { enable = true } }
+provideFormatter = true
+
+[[language]]
+name = "html"
+formatter = { command = 'npx', args = ["prettier", "--parser", "html"] }
+language-servers = [ "vscode-html-language-server", "tailwindcss-react", "emmet-ls"]
+auto-format = true
+
+
+[[language]]
+name = "css"
+formatter = { command = 'npx', args = ["prettier", "--parser", "css"] }
+language-servers = [ "vscode-css-language-server", "tailwindcss-react", "emmet-ls"]
+auto-format = true
+
+[[language]]
+name = "scss"
+formatter = { command = "prettier", args = ["--stdin-filepath", "dummy.scss"] }
+language-servers = ["vscode-css-language-server"]
+auto-format = true
+
+
+[language-server.emmet-ls]
+args = ["--stdio"]
+command = "emmet-language-server"
+
+[language-server.eslint]
+args = ["--stdio"]
+command = "vscode-eslint-language-server"
+
+[language-server.eslint.config]
+format = { enable = true }
+nodePath = ""
+quiet = false
+rulesCustomizations = []
+run = "onType"
+validate = "on"
+codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = false } }
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+experimental = { }
+problems = { shortenToSingleLine = false }
+
+[language-server.volar]
+command = "vue-language-server"
+args = ["--stdio"]
+
+[language-server.tailwindcss-vue]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+config = {}
+
+[language-server.tailwindcss-react]
+language-id = "typescriptreact"
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+config = {}
+
+# TOML
+# ==============================================================================
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+config = {}
+
+[[language]]
+name = "toml"
+auto-format = false
+language-servers = ["taplo"]
+file-types = ["toml", "poetry.lock", "Cargo.lock"]
+comment-token = "#"
+# ==============================================================================
+
+# YAML
+# ==============================================================================
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "yaml"
+auto-format = false
+language-servers = ["yaml-language-server"]
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+# ==============================================================================
+
+# Ini
+# ==============================================================================
+[[language]]
+name = "ini"
+scope = "source.ini"
+file-types = ["ini", { glob = ".buckconfig" }]
+comment-token = "#"
+indent = { tab-width = 4, unit = "\t" }
+
+[[grammar]]
+name = "ini"
+source = { git = "https://github.com/justinmk/tree-sitter-ini", rev = "4d247fb876b4ae6b347687de4a179511bf67fcbc" }
+# ==============================================================================

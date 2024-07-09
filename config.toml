@@ -1,0 +1,110 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+cursorline = true
+cursorcolumn = true
+bufferline = "always"
+color-modes = true
+
+[editor.statusline]
+left = [
+  "mode",
+  "spacer",
+  "version-control",
+  "spacer",
+  "workspace-diagnostics",
+  "spacer",
+  "spinner",
+]
+center = [
+  "diagnostics",
+  "file-modification-indicator",
+]
+right = [
+  "position",
+  "position-percentage",
+  "total-line-numbers",
+  "spacer",
+  "separator",
+  "primary-selection-length",
+  "selections",
+  "separator",
+  "file-type",
+  "file-line-ending",
+]
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+select = "block"
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace.render]
+newline = "all"
+
+[editor.indent-guides]
+render = true
+character = "|" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+# Custom remappings
+[keys.normal]
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+o = ["open_below", "normal_mode"]
+O = ["open_above", "normal_mode"]
+C-s = ":w"
+C-r = ":config-reload"
+C-o = "jump_backward"
+C-i = "jump_forward"
+H = "goto_previous_buffer"
+L = "goto_next_buffer"
+K = "hover"
+G = "goto_file_end"
+ret= "expand_selection"
+backspace = "shrink_selection"
+
+[keys.insert]
+j = { k = "normal_mode" }
+
+[keys.select]
+o = ["open_below", "normal_mode"]
+O = ["open_above", "normal_mode"]
+G = "goto_file_end"
+C-c = "no_op"
+
+[keys.normal.g]
+a = "code_action"
+h = "goto_first_nonwhitespace"
+s = "goto_line_start"
+g = "goto_file_start"
+
+[keys.select.g]
+h = "goto_first_nonwhitespace"
+s = "goto_line_start"
+g = "goto_file_start"
+
+[keys.normal.space]
+space = "file_picker"
+c = ":buffer-close"
+n = ":new"
+q = ":quit"
+e = ":sh helix-wezterm.sh explorer"
+
+[keys.normal.space.","]
+b = ":sh helix-wezterm.sh blame"
+c = ":sh helix-wezterm.sh check"
+e = ":sh helix-wezterm.sh explorer"
+f = ":sh helix-wezterm.sh fzf"
+g = ":sh helix-wezterm.sh lazygit"
+o = ":sh helix-wezterm.sh open"
+r = ":sh helix-wezterm.sh run"
+s = ":sh helix-wezterm.sh test_single"
+t = ":sh helix-wezterm.sh test_all"
